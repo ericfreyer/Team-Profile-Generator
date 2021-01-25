@@ -5,6 +5,7 @@ const writeFileAsync = util.promisify(fs.writeFile);
 const cards = require("./user_cards");
 
 
+
 class Employee{
     constructor(name, id, email){
         this.name = name;
@@ -96,3 +97,30 @@ function internQuestions() {
     return inquirer
         .prompt(questions);
 }
+async function start() {
+    var employeeArr = [];
+Inquirer()
+    .then(function ({ name, id, email, position }) {
+        if (position === "Manager") {
+        managerQuestions()
+            .then(function ({ officeNumber }) {
+            this.Employee = new Manager(name, id, email, officeNumber, position);
+            employeeArr.push(Employee);
+            });
+    } else if (position === "Engineer") {
+        engineerQuestions()
+            .then(function ({ github }) {
+            this.Employee = new Engineer(name, id, email, github, position);
+            employeeArr.push(Employee);
+            });
+    } else if (position === "Intern") {
+        internQuestions()
+            .then(function ({ school }) {
+            this.Employee = new Intern(name, id, email, school, position);
+            employeeArr.push(Employee);
+            });
+    }
+    })
+}
+
+start()
