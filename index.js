@@ -36,3 +36,63 @@ class Engineer{
         this.userName = userName
     }
 }
+
+
+
+
+function Inquirer() {
+    const questions = [{
+        type: "input",
+        message: "What is your name?",
+        name: "name"
+    }, {
+        type: "input",
+        message: "What is your ID number?",
+        name: "id"
+    }, {
+        type: "input",
+        message: "What is your email address?",
+        name: "email"
+    }, {
+        type: "list",
+        message: "What is your position",
+        choices: ["Manager", "Engineer", "Intern"],
+        name: "position"
+    }];
+
+    return inquirer
+        .prompt(questions);
+}
+
+function managerQuestions() {
+    const questions = [{
+        type: "input",
+        message: "What is your office number?",
+        name: "officeNumber"
+    }];
+
+    return inquirer
+        .prompt(questions);
+}
+
+function engineerQuestions() {
+    const questions = [{
+        type: "input",
+        message: "What is your github?",
+        name: "github"
+    }];
+
+    return inquirer
+        .prompt(questions);
+}
+
+function internQuestions() {
+    const questions = [{
+        type: "input",
+        message: "What school do you attend?",
+        name: "school"
+    }];
+
+    return inquirer
+        .prompt(questions);
+}
